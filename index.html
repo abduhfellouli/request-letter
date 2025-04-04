@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكواريوم متكامل للبيع في المغرب | مع الأسماك والملحقات</title>
+    <style>
+        :root {
+            --primary: #006266;
+            --secondary: #1289A7;
+            --accent: #25D366;
+            --sold: #e74c3c;
+            --highlight: #f39c12;
+            --light: #f5f5f5;
+            --dark: #333;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 30px 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23f5f7fa" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23f5f7fa" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23f5f7fa"/></svg>');
+            background-size: cover;
+            z-index: 10;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: white;
+            padding: 15px 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav a {
+            padding: 8px 20px;
+            margin: 0 5px;
+            text-decoration: none;
+            color: var(--primary);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        nav a:hover, nav a.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        /* Category Sections */
+        .category {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+        
+        .category-title {
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+        
+        /* Items Grid */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .item-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .item-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .item-media {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .item-media img, .item-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .item-card:hover .item-media img {
+            transform: scale(1.1);
+        }
+        
+        .item-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .sold-badge {
+            background-color: var(--sold);
+        }
+        
+        .free-badge {
+            background-color: var(--highlight);
+        }
+        
+        .item-content {
+            padding: 20px;
+        }
+        
+        .item-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        
+        .item-price {
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .item-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Special Offer Banner */
+        .special-offer {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .special-offer::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 8s infinite linear;
+            z-index: 1;
+        }
+        
+        .special-offer-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .offer-price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: white;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+        
+        .whatsapp-btn {
+            background: var(--accent);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            border: 2px solid white;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
+        }
+        
+        /* Fixed WhatsApp Button */
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: var(--accent);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+            z-index: 99;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-fixed:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+            animation: none;
+        }
+        
+        /* Main Package Offers */
+        .package-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+        
+        .package-offer {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            max-width: 400px;
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .package-title {
+            margin-top: 0;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .package-list {
+            color: white;
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .package-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-right: 20px;
+        }
+        
+        .package-list li:before {
+            content: "✅";
+            position: absolute;
+            right: 0;
+            color: var(--accent);
+        }
+        
+        .package-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-top: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .package-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Gallery Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            padding: 20px;
+        }
+        
+        .modal-media {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+        
+        .gallery-thumbnail {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .gallery-thumbnail:hover, .gallery-thumbnail.active {
+            opacity: 1;
+            border-color: var(--accent);
+        }
+        
+        /* Video Controls */
+        video {
+            background-color: #000;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .items-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px 5px;
+            }
+            
+            nav a {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+                margin: 2px;
+            }
+            
+            .items-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            
+            .item-media {
+                height: 160px;
+            }
+            
+            .item-content {
+                padding: 15px;
+            }
+            
+            .special-offer {
+                padding: 20px;
+            }
+            
+            .offer-price {
+                font-size: 2rem;
+            }
+            
+            .whatsapp-fixed {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .package-offer {
+                min-width: 100%;
+            }
+            
+            .gallery-thumbnail {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 25px 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .category {
+                padding: 20px 15px;
+            }
+            
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-media {
+                max-width: 100%;
+                max-height: 60vh;
+            }
+            
+            .close {
+                top: 10px;
+                right: 15px;
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section with Main Offers -->
+    <header>
+        <h1>أكواريوم متكامل للبيع</h1>
+        <p style="font-size: 1.2rem;">مع جميع الملحقات والأسماك - عروض خاصة</p>
+        
+        <div class="package-container">
+            <!-- Package 1 -->
+            <div class="package-offer">
+                <h3 class="package-title">الباقة الأولى:</h3>
+                <p class="item-price" style="text-decoration: line-through; color: #999;">345 درهم</p>
+                <h3 class="package-title"> 320 درهم</h3>
+                <ul class="package-list">
+                    <li>1 أكواريوم (اختيار من الاثنين) (100 درهم)</li>
+                    <li>سمك الأنجل (70 درهم)</li>
+                    <li>حصى أسود أو أبيض (15 درهم)</li>
+                    <li>   ديكور فخار (20 درهم)</li>
+                    <li>1 منظم حرارة (70 درهم)</li>
+                    <li>1 فلتر 6W (70 درهم)</li>
+                    <li>هدية🎁: علبة طعام أسماك</li>
+                </ul>
+                <a href="https://wa.me/212632262762?text=أريد الباقة الأولى بسعر 320 درهم" class="package-btn">
+                    اطلب هذه الباقة
+                </a>
+            </div>
+            
+            <!-- Package 2 -->
+            <div class="package-offer">
+                <h3 class="package-title">الباقة الثانية:</h3>
+                <p class="item-price" style="text-decoration: line-through; color: #999;">320 درهم</p>
+                <h3 class="package-title"> 299 درهم</h3>
+                <ul class="package-list">
+                    <li>1 أكواريوم (اختيار من الاثنين) (100 درهم)</li>
+                    <li>الزوج الذهبي (45 درهم)</li>
+                    <li>حلزون التفاحة (15 درهم)</li>
+                    <li>حصى أسود أو أبيض (15 درهم)</li>
+                    <li>شبكة صيد (15 درهم)</li>
+                    <li>1 منظم حرارة (70 درهم)</li>
+                    <li>1 فلتر 3.5W (60 درهم)</li>
+                    <li>هدية🎁: علبة طعام أسماك</li>
+                </ul>
+                <a href="https://wa.me/212632262762?text=أريد الباقة الثانية بسعر 299 درهم" class="package-btn">
+                    اطلب هذه الباقة
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <a href="#fish" class="active">الأسماك</a>
+        <a href="#aquariums">الأكواريوم</a>
+        <a href="#accessories">الاكسسوارات</a>
+        <a href="#equipment">المعدات</a>
+        <a href="#offer">🚨العرض الخاص</a>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Fish Section -->
+        <section id="fish" class="category">
+            <h2 class="category-title">الأسماك المتوفرة</h2>
+            <div class="items-grid">
+                <!-- Angelfish (Available) -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/fish/angelfish.jpg" alt="سمك أنجل">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">سمك أنجل (سكالير)</h3>
+                        <p class="item-price">70 درهم</p>
+                        <p class="item-desc">أنثى♀️ - حجم متوسط - صحية وسليمة</p>
+                        <button onclick="openGallery('angelfish', ['assets/images/fish/angelfish.jpg', 'assets/videos/angelfish_video1.mp4', 'assets/videos/angelfish_video2.mp4'])" class="btn">عرض التفاصيل</button>
+                    </div>
+                </div>
+                
+                <!-- Angelfish (Sold) -->
+                <div class="item-card">
+                    <div class="item-media" style="filter: grayscale(70%);">
+                        <img src="assets/images/fish/angelfish1.jpg" alt="سمك أنجل مباع">
+                        <div class="item-badge sold-badge">تم البيع</div>
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">سمك أنجل (سكالير)</h3>
+                        <p class="item-price" style="text-decoration: line-through; color: #999;">70 درهم</p>
+                        <p class="item-desc">أنثى♀️ - تم بيعها</p>
+                    </div>
+                </div>
+                
+                <!-- Goldfish 1 -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/fish/goldfish1.jpg" alt="سمك ذهبي">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">سمك ذهبي</h3>
+                        <p class="item-price">25 درهم</p>
+                        <p class="item-desc">ذكر♂️ - لون مميز - حجم متوسط</p>
+                        <button onclick="openGallery('goldfish1', ['assets/images/fish/goldfish1.jpg'])" class="btn">عرض الصورة</button>
+                    </div>
+                </div>
+                
+                <!-- Goldfish 2 -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/fish/goldfish2.jpg" alt="سمك ذهبي">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">سمك ذهبي</h3>
+                        <p class="item-price">25 درهم</p>
+                        <p class="item-desc">أنثى♀️ - حجم كبير - لون ناصع</p>
+                        <button onclick="openGallery('goldfish2', ['assets/images/fish/goldfish2.jpg'])" class="btn">عرض الصورة</button>
+                    </div>
+                </div>
+                
+                <!-- Goldfish Together -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/fish/goldfish_together.jpg" alt="السمك الذهبي معاً">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">الزوج الذهبي</h3>
+                        <p class="item-price" style="text-decoration: line-through; color: #999;">50 درهم</p>
+                        <p class="item-price">45 درهم للاثنين</p>
+                        <p class="item-desc">ذكر وأنثى - يمكن بيعهما معاً</p>
+                        <button onclick="openGallery('goldfish_together', ['assets/images/fish/goldfish_together.jpg', 'assets/videos/golden_fish_video.mp4'])" class="btn">عرض التفاصيل</button>
+                    </div>
+                </div>
+                
+                <!-- Apple Snail -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/fish/apple_snail.jpg" alt="حلزون التفاحة">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">حلزون التفاحة</h3>
+                        <p class="item-price">15 درهم</p>
+                        <p class="item-desc">يساعد في تنظيف الأكواريوم</p>
+                        <button onclick="openGallery('apple_snail', ['assets/images/fish/apple_snail.jpg', 'assets/videos/apple_snail_video.mp4'])" class="btn">عرض التفاصيل</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Aquariums Section -->
+        <section id="aquariums" class="category">
+            <h2 class="category-title">الأكواريومات</h2>
+            <div class="items-grid">
+                <!-- Aquarium 1 -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/aquariums/aquarium1/angle1.jpg" alt="أكواريوم بحالة جيدة">
+                        <div class="item-badge free-badge">+ هدية🎁 (طعام مجاني)</div>
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">أكواريوم كبير</h3>
+                        <p class="item-price">100 درهم</p>
+                        <p class="item-desc">مقاسات: 35سم ارتفاع × 33سم × 24سم</p>
+                        <button onclick="openGallery('aquarium1', [
+                            'assets/images/aquariums/aquarium1/angle1.jpg',
+                            'assets/images/aquariums/aquarium1/size1.jpg',
+                            'assets/images/aquariums/aquarium1/size2.jpg',
+                            'assets/images/aquariums/aquarium1/size3.jpg',
+                            'assets/videos/aquariums_together.mp4'
+                        ])" class="btn">عرض التفاصيل</button>
+                    </div>
+                </div>
+                
+                <!-- Aquarium 2 -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/aquariums/aquarium2/angle1.jpg" alt="أكواريوم ثاني">
+                        <div class="item-badge free-badge">+ هدية🎁 (طعام مجاني)</div>
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">أكواريوم كبير</h3>
+                        <p class="item-price">100 درهم</p>
+                        <p class="item-desc">مقاسات: 35سم ارتفاع × 33سم × 24سم</p>
+                        <button onclick="openGallery('aquarium2', [
+                            'assets/images/aquariums/aquarium2/angle1.jpg',
+                            'assets/images/aquariums/aquarium2/size1.jpg',
+                            'assets/images/aquariums/aquarium2/size2.jpg',
+                            'assets/images/aquariums/aquarium2/size3.jpg',
+                            'assets/videos/aquariums_together.mp4'
+                        ])" class="btn">عرض التفاصيل</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Accessories Section -->
+        <section id="accessories" class="category">
+            <h2 class="category-title">الاكسسوارات</h2>
+            <div class="items-grid">
+                <!-- Fish Holder -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/accessories/fish_holder.jpg" alt="شبكة صيد الأسماك">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">شبكة حمل الأسماك</h3>
+                        <p class="item-price">15 درهم</p>
+                        <p class="item-desc">جودة عالية - مقاس مناسب</p>
+                        <button onclick="openGallery('fish_holder', ['assets/images/accessories/fish_holder.jpg'])" class="btn">عرض التفاصيل</button>
+                    </div>
+                </div>
+                
+                <!-- Black Rocks -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/accessories/black_rocks.jpg" alt="حصى أسود">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">حصى أسود</h3>
+                        <p class="item-price">15 درهم</p>
+                        <p class="item-desc">لون أسود ناعم - كمية كبيرة</p>
+                        <button onclick="openGallery('black_rocks', ['assets/images/accessories/black_rocks.jpg'])" class="btn">عرض الصورة</button>
+                    </div>
+                </div>
+                
+                <!-- White Rocks -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/accessories/white_rocks.jpg" alt="حصى أبيض">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">حصى أبيض مع حصى طبيعي</h3>
+                        <p class="item-price">15 درهم</p>
+                        <p class="item-desc">مزيج جميل - أحجام مختلفة</p>
+                        <button onclick="openGallery('white_rocks', ['assets/images/accessories/white_rocks.jpg'])" class="btn">عرض الصورة</button>
+                    </div>
+                </div>
+                
+                <!-- Bacteria Decoration -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/accessories/bacteria_decoration.jpg" alt="ديكور البكتيريا">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">ديكور من الفخار</h3>
+                        <p class="item-price">30 درهم</p>
+                        <p class="item-desc">يساعد في توازن الأكواريوم</p>
+                        <button onclick="openGallery('bacteria_decoration', ['assets/images/accessories/bacteria_decoration.jpg'])" class="btn">عرض الصورة</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Equipment Section -->
+        <section id="equipment" class="category">
+            <h2 class="category-title">المعدات</h2>
+            <div class="items-grid">
+                <!-- Filter 1 -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/equipment/filter1.jpg" alt="فلتر 6W">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">فلتر + أكسجين (6W)</h3>
+                        <p class="item-price">70 درهم</p>
+                        <p class="item-desc">قوة أعلى - يمكن توجيه التيار الى الأعلى</p>
+                        <button onclick="openGallery('filter1', [
+                            'assets/images/equipment/filter1.jpg',
+                            'assets/images/equipment/filter1_extra1.jpg',
+                            'assets/images/equipment/filter1_extra2.jpg',
+                            'assets/images/equipment/filter1_info.jpg'
+                        ])" class="btn">عرض التفاصيل</button>
+                    </div>
+                </div>
+                
+                <!-- Filter 2 -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/equipment/filter2.jpg" alt="فلتر 3.5W">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">فلتر + أكسجين (3.5W)</h3>
+                        <p class="item-price">60 درهم</p>
+                        <p class="item-desc">يعمل بشكل ممتاز - بدون مشاكل</p>
+                        <button onclick="openGallery('filter2', [
+                            'assets/images/equipment/filter2.jpg',
+                            'assets/images/equipment/filter2_extra1.jpg',
+                            'assets/images/equipment/filter2_info.jpg'
+                        ])" class="btn">عرض التفاصيل</button>
+                    </div>
+                </div>
+                
+                <!-- Thermostat -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/equipment/thermostat.jpg" alt="منظم الحرارة">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">منظم الحرارة</h3>
+                        <p class="item-price">70 درهم للواحدة</p>
+                        <p class="item-desc">بحالة ممتازة - مع العلبة الأصلية</p>
+                        <button onclick="openGallery('thermostat', ['assets/images/equipment/thermostat.jpg'])" class="btn">عرض الصورة</button>
+                    </div>
+                </div>
+                
+                <!-- Light -->
+                <div class="item-card">
+                    <div class="item-media">
+                        <img src="assets/images/equipment/light.jpg" alt="إضاءة الأكواريوم">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">إضاءة الأكواريوم</h3>
+                        <p class="item-price">40 درهم</p>
+                        <p class="item-desc">إضاءة LED - موفرة للطاقة</p>
+                        <button onclick="openGallery('light', ['assets/images/equipment/light.jpg'])" class="btn">عرض الصورة</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Special Offer -->
+        <section id="offer" class="special-offer">
+            <div class="special-offer-content">
+                <h2 style="margin-top: 0; font-size: 2rem;">العرض الشامل</h2>
+                <p style="font-size: 1.2rem;">احصل على كل شيء معاً بسعر مميز</p>
+                <div class="offer-price">599 درهم</div>
+                <p style="margin-bottom: 20px; font-size: 1.1rem;">يشمل: الأكواريومين + جميع الأسماك + كل الملحقات والمعدات</p>
+                <a href="https://wa.me/212632262762?text=أنا مهتم بالعرض الشامل للأكواريوم" class="whatsapp-btn">
+                    <span>تواصل عبر الواتساب</span>
+                </a>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <div id="modalMediaContainer">
+                <!-- Media will be inserted here by JavaScript -->
+            </div>
+            <div class="gallery-nav" id="thumbnailsContainer">
+                <!-- Thumbnails will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Fixed WhatsApp Button -->
+    <a href="https://wa.me/212632262762?text=مرحبا، أنا مهتم بالأكواريوم المعروض للبيع" class="whatsapp-fixed">
+        <span>📱</span>
+    </a>
+
+    <script>
+        // Gallery functionality
+        let currentGallery = [];
+        let currentIndex = 0;
+        
+        function openGallery(name, mediaArray) {
+            currentGallery = mediaArray;
+            currentIndex = 0;
+            showMedia(currentIndex);
+            document.getElementById('galleryModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Create thumbnails
+            const thumbnailsContainer = document.getElementById('thumbnailsContainer');
+            thumbnailsContainer.innerHTML = '';
+            
+            mediaArray.forEach((media, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = media;
+                thumbnail.classList.add('gallery-thumbnail');
+                if (index === 0) thumbnail.classList.add('active');
+                thumbnail.onclick = () => {
+                    showMedia(index);
+                };
+                thumbnailsContainer.appendChild(thumbnail);
+            });
+        }
+        
+        function showMedia(index) {
+            currentIndex = index;
+            const mediaContainer = document.getElementById('modalMediaContainer');
+            mediaContainer.innerHTML = '';
+            
+            const mediaPath = currentGallery[index];
+            const extension = mediaPath.split('.').pop().toLowerCase();
+            
+            if (extension === 'mp4' || extension === 'webm' || extension === 'ogg') {
+                const video = document.createElement('video');
+                video.src = mediaPath;
+                video.controls = true;
+                video.autoplay = true;
+                video.classList.add('modal-media');
+                mediaContainer.appendChild(video);
+            } else {
+                const img = document.createElement('img');
+                img.src = mediaPath;
+                img.classList.add('modal-media');
+                mediaContainer.appendChild(img);
+            }
+            
+            // Update active thumbnail
+            const thumbnails = document.querySelectorAll('.gallery-thumbnail');
+            thumbnails.forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+        
+        function closeModal() {
+            document.getElementById('galleryModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside of content
+        window.onclick = function(event) {
+            const modal = document.getElementById('galleryModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            const modal = document.getElementById('galleryModal');
+            if (modal.style.display === 'block') {
+                if (event.key === 'ArrowRight') {
+                    // Next
+                    currentIndex = (currentIndex + 1) % currentGallery.length;
+                    showMedia(currentIndex);
+                } else if (event.key === 'ArrowLeft') {
+                    // Previous
+                    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+                    showMedia(currentIndex);
+                } else if (event.key === 'Escape') {
+                    closeModal();
+                }
+            }
+        });
+        
+        // Show delay message for WhatsApp
+        function showDelayMessage() {
+            // You can add a confirmation message here if needed
+            console.log("Opening WhatsApp...");
+        }
+    </script>
+</body>
+</html>
